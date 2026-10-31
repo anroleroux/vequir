@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+# Staging: every branch that is pushed is built and deployed, so pushing
+# a branch is how you look at it. A repo has one Pages deployment, so
+# the most recent push (from any branch) is what is live — not a URL
+# per branch.
+#
+# Served as the anroleroux GitHub Pages project site, which the user
+# site's custom domain puts at anroleroux.co.za/veqir — so the build is
+# made with that base path and needs no CNAME of its own.
+#
+# It is the offline `make dev` build until a back end exists; then this
+# job switches to `make stg` (see the unframe skill, "Going to
+# production").
+
+on:
+  push:                     # any branch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:                # one deploy at a time; don't cancel an in-flight one
+  group: pages-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-staging:
+    if: github.repository == 'anroleroux/veqir'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # make, awk and sed are already on the runner — nothing to install.
+      - name: Build the offline single-file site
+        run: make dev BASE=/veqir/
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ui/dist
+
+      - uses: actions/deploy-pages@v4
+        id: deployment

@@ -1,0 +1,10 @@
+{{reactivity-js}}:ui/reactivity.js
+{{demo-js}}:ui/demo.js
+{{header-js}}:ui/comps/header.js
+{{listing-js}}:ui/comps/listing.js
+{{product-js}}:ui/comps/product.js
+{{checkout-js}}:ui/comps/checkout.js
+{{done-js}}:ui/comps/done.js
+{{cart-js}}:ui/comps/cart.js
+{{search-js}}:ui/comps/search.js
+{{toast-js}}:ui/comps/toast.js
