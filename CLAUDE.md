@@ -12,5 +12,5 @@ before changing structure. Key rules:
   or field changes, and keep `ui/demo.js` in step (bump `DEMO_VERSION`).
 - Only `make dev` (offline) exists for now. Back-end code, when it arrives,
   goes inside `//online-start … //online-end` or a trailing `//online`.
-- Deployed by `.github/workflows/pages.yml` with `BASE=/veqir/`
+- Every pushed branch deploys (staging) via `.github/workflows/pages.yml`, with `BASE=/veqir/`
   (anroleroux.co.za/veqir). No CNAME — the user site's domain covers it.

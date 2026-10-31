@@ -31,8 +31,11 @@ repo root. The page is also published as `404.html`, so deep links
 (`/veqir/parts/psu`) load the app on GitHub Pages and the router opens the
 right view.
 
-`.github/workflows/pages.yml` builds and deploys on every push to `main`.
-One-time setup: **Settings → Pages → Source: GitHub Actions**.
+`.github/workflows/pages.yml` builds and deploys on every push to **any
+branch** — staging: the most recent push is what is live.
+One-time setup: **Settings → Pages → Source: GitHub Actions**, and under
+**Settings → Environments → github-pages → Deployment branches and tags**
+allow all branches (by default only `main` may deploy).
 
 ## Layout
 
