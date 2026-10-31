@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="{{base}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VeqIR — parts for people who build things</title>
+    <meta name="description" content="Microcontrollers, power modules, bench tools and VeqIR's own test gear. Shipped within 24 hours.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0B0B0C">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VeqIR — parts for people who build things">
+    <meta property="og:description" content="Microcontrollers, power, tools and VeqIR devices.">
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
+
+    <style>
+        /*{{layout-css}}*/
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="site-header" id="site-header"></header>
+
+        <main class="main">
+            <div id="listing"></div>
+            <div id="product"></div>
+            <div id="checkout"></div>
+            <div id="done"></div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="site-footer__inner">
+                <span class="logo logo--small">V<span class="logo__eq">eq</span>IR</span>
+                <div class="site-footer__links">
+                    <span>Shipping</span>
+                    <span>Returns</span>
+                    <span>Contact</span>
+                    <span>&copy; 2026</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="cart"></div>
+
+    <!-- The search box is static so typing never loses focus to a
+         re-render; only the results list below it is a mount. -->
+    <div class="search" id="search" hidden onclick="closeSearch()">
+        <div class="search__panel" role="dialog" aria-label="Search parts" onclick="event.stopPropagation()">
+            <div class="search__inner">
+                <div class="search__bar">
+                    <input class="search__input" id="search-input" placeholder="Search parts" autocomplete="off"
+                           aria-label="Search parts" oninput="search.query = this.value" onkeydown="searchKey(event)">
+                    <button class="search__esc" type="button" onclick="closeSearch()">ESC</button>
+                </div>
+                <div id="search-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+        // {{layout-js}}
+    </script>
+</body>
+</html>
