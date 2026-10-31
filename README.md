@@ -1,7 +1,7 @@
 # veqir
 
-The VeqIR online shop — microcontrollers, power modules, bench tools and
-VeqIR's own devices. Built the **unframe** way (see
+The VequIR online shop — microcontrollers, power modules, bench tools and
+VequIR's own devices. Built the **unframe** way (see
 `.claude/skills/unframe/SKILL.md`): plain HTML/CSS/JS, a ~120-line Proxy
 reactivity core, and an `awk`-based Makefile that composes everything into one
 static `ui/dist/index.html`. No framework, no npm.
@@ -67,7 +67,7 @@ One localStorage key per model, each a JSON array of rows. Relations are ids.
 | `id` | integer | PK |
 | `slug` | text | unique; URL segment |
 | `name` | text | |
-| `house` | boolean | VeqIR's own range — tiles drawn blue |
+| `house` | boolean | VequIR's own range — tiles drawn blue |
 | `position` | integer | display order |
 
 ### `products` (catalogue)

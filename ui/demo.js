@@ -13,7 +13,7 @@
    models documented in the README.
    ============================================================ */
 
-var DEMO_VERSION = 1;
+var DEMO_VERSION = 2;
 
 /* Specs are their own model (one row per label/value, ordered by
    `position`); they are written inline here only to keep the seed
@@ -58,16 +58,16 @@ var DEMO_PRODUCTS = [
     { id: 13, category_id: 3, slug: "bb", name: "Breadboard 830", code: "BB‑830", price: 4.9, stock: 300,
       blurb: "830 tie points. Grips tight, releases clean.",
       specs: [["Tie points", "830"], ["Power rails", "4"], ["Contacts", "Phosphor bronze"], ["Wire gauge", "20 – 29 AWG"], ["Backing", "Adhesive"], ["Size", "165 × 55 mm"]] },
-    { id: 14, category_id: 4, slug: "load", name: "VeqIR Ω‑1 Electronic Load", code: "Ω‑1", price: 89, stock: 7,
+    { id: 14, category_id: 4, slug: "load", name: "VequIR Ω‑1 Electronic Load", code: "Ω‑1", price: 89, stock: 7,
       blurb: "Constant current, power and resistance. Test every supply you own.",
       specs: [["Modes", "CC, CP, CR"], ["Rating", "0 – 30 V, 0 – 10 A, 150 W"], ["Resolution", "1 mA / 10 mV"], ["Cooling", "Active, temp-controlled"], ["Interface", "USB‑C serial"], ["Display", "2\" IPS"]] },
-    { id: 15, category_id: 4, slug: "meter", name: "VeqIR Spark USB Meter", code: "SPARK", price: 29, stock: 54,
+    { id: 15, category_id: 4, slug: "meter", name: "VequIR Spark USB Meter", code: "SPARK", price: 29, stock: 54,
       blurb: "In-line V, A and W for any USB‑C cable. PD sniffing included.",
       specs: [["Range", "4 – 48 V, 0 – 6 A"], ["Accuracy", "±0.5%"], ["Protocols", "USB PD 3.1, QC"], ["Logging", "10k samples"], ["Display", "0.96\" OLED"], ["Size", "42 × 18 mm"]] },
-    { id: 16, category_id: 4, slug: "node", name: "VeqIR Node N1", code: "NODE N1", price: 34, stock: 2,
+    { id: 16, category_id: 4, slug: "node", name: "VequIR Node N1", code: "NODE N1", price: 34, stock: 2,
       blurb: "Battery sensor node. Sleeps at 8 µA, wakes on anything.",
       specs: [["MCU", "ESP32‑C6"], ["Wireless", "Wi‑Fi 6, BLE, Thread"], ["Sleep current", "8 µA"], ["Sensors", "Temp, RH, pressure, light"], ["Battery", "18650 holder"], ["Expansion", "Qwiic / STEMMA"]] },
-    { id: 17, category_id: 4, slug: "pulse", name: "VeqIR Pulse Generator", code: "PULSE", price: 59, stock: 15,
+    { id: 17, category_id: 4, slug: "pulse", name: "VequIR Pulse Generator", code: "PULSE", price: 59, stock: 15,
       blurb: "Square, sine, triangle — and anything you can draw.",
       specs: [["Channels", "2"], ["Bandwidth", "10 MHz sine"], ["Sample rate", "125 MS/s"], ["Amplitude", "±10 V"], ["Waveforms", "4 + arbitrary"], ["Interface", "USB‑C, rotary"]] }
 ];
@@ -80,7 +80,7 @@ function seedDemo() {
             { id: 1, slug: "microcontrollers", name: "Microcontrollers", house: false, position: 1 },
             { id: 2, slug: "power", name: "Power", house: false, position: 2 },
             { id: 3, slug: "tools", name: "Tools", house: false, position: 3 },
-            { id: 4, slug: "veqir-devices", name: "VeqIR devices", house: true, position: 4 }
+            { id: 4, slug: "vequir-devices", name: "VequIR devices", house: true, position: 4 }
         ]);
     }
 

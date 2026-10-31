@@ -1,5 +1,5 @@
 /* ============================================================
-   VeqIR — layout.js
+   VequIR — layout.js
    The shell the composer wraps around every component: the reactive
    core, the localStorage data layer, the demo seed, shared helpers
    and the router, then the components themselves.
@@ -69,7 +69,7 @@ function money(amount) { return CURRENCY + Number(amount).toFixed(2); }
 /* Round to whole cents, so sums of prices store as 9.3, not 9.2999…. */
 function cents(amount) { return Math.round(amount * 100) / 100; }
 
-/* VeqIR's own devices are drawn on blue, everything else on black. */
+/* VequIR's own devices are drawn on blue, everything else on black. */
 function isHouse(p) {
     var c = categoryById(p.category_id);
     return !!(c && c.house);
@@ -131,7 +131,7 @@ function go(path, replace) {
 }
 
 function setTitle(title) {
-    document.title = title ? title + " — VeqIR" : SITE_TITLE;
+    document.title = title ? title + " — VequIR" : SITE_TITLE;
 }
 
 /* An <a> into the site: a real href (so new-tab and copy-link work)

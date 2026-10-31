@@ -1,5 +1,5 @@
 # ============================================================
-#  VeqIR — single-file build (unframe method)
+#  VequIR — single-file build (unframe method)
 #
 #  The composer (make/tpl.mk) first inlines the reactive core, the
 #  demo seed and every component into one script, then streams

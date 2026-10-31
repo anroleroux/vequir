@@ -1,5 +1,5 @@
 /* ============================================================
-   VeqIR — layout.css
+   VequIR — layout.css
    Black, white and one electric blue. Archivo (variable width) for
    display and body, JetBrains Mono for every figure and label.
    ============================================================ */
@@ -241,7 +241,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 }
 
 /* A part's tile: no photography yet, so the part code is the picture.
-   VeqIR's own devices sit on blue, everything else on black. */
+   VequIR's own devices sit on blue, everything else on black. */
 .tile {
     position: relative;
     display: flex;

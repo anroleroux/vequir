@@ -2,8 +2,8 @@
 
 function headerTemplate(state) {
     return '<div class="bar">' +
-               '<a class="logo" ' + linkAttrs("", "openList(null)") + ' aria-label="VeqIR — all parts">' +
-                   'V<span class="logo__eq">eq</span>IR</a>' +
+               '<a class="logo" ' + linkAttrs("", "openList(null)") + ' aria-label="VequIR — all parts">' +
+                   'V<span class="logo__eq">equ</span>IR</a>' +
                '<button class="search-trigger" type="button" onclick="openSearch()">' +
                    ICON_SEARCH +
                    '<span class="search-trigger__label">Search parts</span>' +
