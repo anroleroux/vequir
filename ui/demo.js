@@ -13,7 +13,7 @@
    models documented in the README.
    ============================================================ */
 
-var DEMO_VERSION = 4;
+var DEMO_VERSION = 5;
 
 /* Specs are their own model (one row per label/value, ordered by
    `position`); they are written inline here only to keep the seed
@@ -87,8 +87,8 @@ var DEMO_PRODUCTS = [
        and boards, under the lid — hide the lid layer to look inside. */
     { id: 20, category_id: 4, slug: "pb6", name: "VequIR PB6 Robot Base", code: "PB6", price: 49, stock: 9,
       image: "img/products/pb6.webp",
-      blurb: "A six-cell power base for small robots: charge over USB‑C, charge your phone off it.",
-      specs: [["Battery", "6 × 18650 pack, 2S3P, 8.4 V full"], ["Size", "140 × 86 × 53 mm"], ["Charging", "CN3302 2S boost charger, USB‑C in"], ["USB out", "2 × USB‑A fast charge (IP6505)"], ["Protection", "2S BMS, 8 A"], ["Cells", "Not included"]],
+      blurb: "A six-cell power base for small robots, the pack screwed down inside: charge over USB‑C, charge your phone off it.",
+      specs: [["Battery", "6 × 18650 pack, 2S3P, 8.4 V full"], ["Size", "140 × 69 × 53 mm"], ["Charging", "CN3302 2S boost charger, USB‑C in"], ["USB out", "2 × USB‑A fast charge (IP6505)"], ["Protection", "2S BMS, 8 A"], ["Cells", "Not included"]],
       meshes: [["lid", "#66ad73"], ["base", "#5c8fc7"], ["holders", "#38383d"], ["cells", "#e08f3d"], ["clips", "#ccccd1"], ["strips", "#4c5461"], ["screws", "#b3b3b8"], ["chargers", "#26734c"], ["bms", "#334c8c"]] }
 ];
 
