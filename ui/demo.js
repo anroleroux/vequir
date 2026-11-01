@@ -13,7 +13,7 @@
    models documented in the README.
    ============================================================ */
 
-var DEMO_VERSION = 5;
+var DEMO_VERSION = 6;
 
 /* Specs are their own model (one row per label/value, ordered by
    `position`); they are written inline here only to keep the seed
@@ -83,13 +83,14 @@ var DEMO_PRODUCTS = [
       blurb: "Six single holders, three wide and two deep, locked together by an end strip at each end.",
       specs: [["Cells", "6 × 18650, 3 × 2"], ["Size", "80.4 × 63 × 40 mm"], ["Contacts", "12 × Keystone 1107‑1 clips"], ["Joining", "2 end strips, 24 × M1.2 × 6 screws"], ["Mounting", "2 tabs per strip, M1.2"], ["Included", "Holders, clips, strips, screws — no cells"]],
       meshes: [["holders", "#38383d"], ["cells", "#e08f3d"], ["clips", "#ccccd1"], ["strips", "#4c5461"], ["screws", "#b3b3b8"]] },
-    /* neoBotics product PB6 (products/PB6): the chassis with its pack
-       and boards, under the lid — hide the lid layer to look inside. */
-    { id: 20, category_id: 4, slug: "pb6", name: "VequIR PB6 Robot Base", code: "PB6", price: 49, stock: 9,
+    /* neoBotics product PB6 (products/PB6), a powerbank: the six-cell
+       pack and its USB boards in the enclosure, under the lid — hide the
+       lid layer to look inside. */
+    { id: 20, category_id: 4, slug: "pb6", name: "VequIR PB6 Powerbank", code: "PB6", price: 49, stock: 9,
       image: "img/products/pb6.webp",
-      blurb: "A six-cell power base for small robots, the pack screwed down inside: charge over USB‑C, charge your phone off it.",
-      specs: [["Battery", "6 × 18650 pack, 2S3P, 8.4 V full"], ["Size", "140 × 69 × 53 mm"], ["Charging", "CN3302 2S boost charger, USB‑C in"], ["USB out", "2 × USB‑A fast charge (IP6505)"], ["Protection", "2S BMS, 8 A"], ["Cells", "Not included"]],
-      meshes: [["lid", "#66ad73"], ["base", "#5c8fc7"], ["holders", "#38383d"], ["cells", "#e08f3d"], ["clips", "#ccccd1"], ["strips", "#4c5461"], ["screws", "#b3b3b8"], ["chargers", "#26734c"], ["bms", "#334c8c"]] }
+      blurb: "Six 18650 cells in one enclosure. Charge it over USB‑C; charge your phone and anything else from its two USB‑A ports.",
+      specs: [["Battery", "6 × 18650 pack, 2S3P, 8.4 V full"], ["Size", "140 × 69 × 53 mm"], ["Charging", "CN3302 2S boost charger, USB‑C in"], ["USB out", "2 × USB‑A fast charge (IP6505)"], ["Cell mounting", "Pack screwed to 4 pillars, 8 × M1.2"], ["Cells", "Not included"]],
+      meshes: [["lid", "#66ad73"], ["base", "#5c8fc7"], ["holders", "#38383d"], ["cells", "#e08f3d"], ["clips", "#ccccd1"], ["strips", "#4c5461"], ["screws", "#b3b3b8"], ["chargers", "#26734c"]] }
 ];
 
 function seedDemo() {

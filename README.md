@@ -52,7 +52,7 @@ make/      tpl.mk (compose macro)  js.map  web.map  neobotics.py
 
 Parts designed in [neoBotics](https://github.com/anroleroux/neoBotics) — the
 single 18650 holder and the six-cell pack from its parts library, and the
-PB6 robot base from its products (`neobotics build PB6`) — carry a
+PB6 powerbank from its products (`neobotics build PB6`) — carry a
 rendered still for their tile and an interactive model on their page
 (`comps/viewer.js`: drag to turn, scroll to zoom, hide or see through each
 layer). The viewer loads three.js 0.160.0 from jsDelivr (pinned in
