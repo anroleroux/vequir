@@ -26,7 +26,7 @@ DEPS      := $(SRC) ui/layout.css ui/layout.js ui/reactivity.js ui/demo.js $(COM
 # Where the build is served from — written into <base href>, which the
 # router and every relative URL resolve against. The default suits a
 # local static server at the repo root; the Pages workflow passes
-# BASE=/veqir/ (anroleroux.co.za/veqir).
+# BASE=/vequir/ (anroleroux.co.za/vequir).
 dev: BASE ?= /ui/dist/
 
 # the compose macro (vendored from the unframe kit; no submodule needed)

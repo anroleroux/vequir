@@ -1,4 +1,4 @@
-# veqir
+# vequir
 
 The VequIR online shop — microcontrollers, power modules, bench tools and
 VequIR's own devices. Built the **unframe** way (see
@@ -6,7 +6,7 @@ VequIR's own devices. Built the **unframe** way (see
 reactivity core, and an `awk`-based Makefile that composes everything into one
 static `ui/dist/index.html`. No framework, no npm.
 
-Served at **anroleroux.co.za/veqir** (the `anroleroux` GitHub Pages project
+Served at **anroleroux.co.za/vequir** (the `anroleroux` GitHub Pages project
 site under the user site's custom domain).
 
 ## Status
@@ -21,14 +21,14 @@ come later, behind `//online` markers.
 
 ```bash
 make dev                  # → ui/dist/index.html (+ 404.html, img/)
-make dev BASE=/veqir/     # what the Pages workflow builds
+make dev BASE=/vequir/     # what the Pages workflow builds
 make clean
 ```
 
 `BASE` is written into `<base href>`; the router and every relative URL
 resolve against it. The default (`/ui/dist/`) suits a static server at the
 repo root. The page is also published as `404.html`, so deep links
-(`/veqir/parts/psu`) load the app on GitHub Pages and the router opens the
+(`/vequir/parts/psu`) load the app on GitHub Pages and the router opens the
 right view.
 
 `.github/workflows/pages.yml` builds and deploys on every push to **any
