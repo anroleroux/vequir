@@ -240,8 +240,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
     gap: clamp(12px, 2vw, 24px) clamp(12px, 2vw, 20px);
 }
 
-/* A part's tile: no photography yet, so the part code is the picture.
-   VequIR's own devices sit on blue, everything else on black. */
+/* A part's tile: without a still, the part code is the picture.
+   VequIR's own devices sit on blue, everything else on black; a part
+   with a still (a rendered model) sits on the light wash. */
 .tile {
     position: relative;
     display: flex;
@@ -253,11 +254,14 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
     text-decoration: none;
 }
 .tile--house { background: var(--blue); }
+.tile--photo { background: var(--wash); color: var(--ink); }
+.tile__img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .tile__code { font-family: var(--mono); font-weight: 700; letter-spacing: -0.02em; text-align: center; line-height: 1.1; }
 
 .card { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .card .tile { aspect-ratio: 1 / 1; padding: 16px; transition: transform .15s; }
 .card .tile:hover { color: var(--paper); transform: translateY(-3px); }
+.card .tile--photo:hover { color: var(--ink); }
 .card .tile__code { font-size: clamp(17px, 2.2vw, 26px); }
 .tile__cat {
     position: absolute;
@@ -269,6 +273,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.72);
 }
+.tile--photo .tile__cat { color: var(--muted); }
 .tile__flag {
     position: absolute;
     bottom: 10px;
@@ -311,6 +316,31 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .pdp__tile { flex: 1 1 380px; aspect-ratio: 1 / 1; padding: 24px; }
 .pdp__tile .tile__code { font-size: clamp(32px, 6vw, 72px); letter-spacing: -0.03em; }
 .pdp__sku { position: absolute; bottom: 16px; right: 18px; font-family: var(--mono); font-size: 11px; color: rgba(255, 255, 255, 0.72); }
+.tile--photo .pdp__sku { color: var(--muted); }
+
+/* The 3D viewer (comps/viewer.js) fills a part's tile: the canvas,
+   or the still until the model is in, over a bar of layer chips. */
+.pdp__tile--3d { padding: 0; align-items: stretch; }
+.viewer { flex: 1; margin: 0; display: flex; flex-direction: column; min-width: 0; }
+.viewer__still { flex: 1; min-height: 0; width: 100%; object-fit: contain; padding: 24px; }
+.viewer__stage { display: none; flex: 1; min-height: 0; }
+.viewer.is-live .viewer__still { display: none; }
+.viewer.is-live .viewer__stage { display: block; }
+.viewer__stage canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+.viewer__stage canvas:active { cursor: grabbing; }
+.viewer__bar { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid var(--rule); }
+.viewer__bar:empty { display: none; }
+.viewer__note { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.layers { display: flex; flex-wrap: wrap; gap: 6px; }
+.layer { display: inline-flex; align-items: stretch; border: 1px solid var(--muted-3); background: var(--paper); font-family: var(--mono); font-size: 11px; }
+.layer button { border: 0; background: none; cursor: pointer; padding: 4px 7px; }
+.layer__show { display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+.layer__swatch { width: 10px; height: 10px; flex: none; border: 1px solid rgba(0, 0, 0, 0.2); }
+.layer--off .layer__show { color: var(--muted-2); text-decoration: line-through; }
+.layer__ghost { border-left: 1px solid var(--muted-3) !important; color: var(--muted); }
+.layer__ghost[aria-pressed="true"] { background: var(--blue-wash); color: var(--blue); }
+.layer button:hover { color: var(--blue); }
+.link-btn { border: 0; background: none; padding: 0; color: var(--blue); font: inherit; text-decoration: underline; cursor: pointer; }
 .pdp__info { flex: 1 1 340px; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 .pdp__intro { display: flex; flex-direction: column; gap: 10px; }
 .pdp__intro .display { font-stretch: 120%; font-size: clamp(32px, 4.4vw, 56px); line-height: 0.95; letter-spacing: -0.03em; }
@@ -523,6 +553,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 }
 .result:hover, .result:focus-visible { background: var(--blue-wash); }
 .result .tile { width: 44px; height: 44px; flex: none; padding: 2px; font-size: 8px; }
+.result .tile--photo { padding: 3px; }
 .result__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .result__name { font-weight: 700; font-size: 16px; }
 .result__cat { font-family: var(--mono); font-size: 11px; color: var(--muted); }

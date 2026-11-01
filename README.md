@@ -42,10 +42,33 @@ allow all branches (by default only `main` may deploy).
 ```
 ui/
   layout.html  layout.css  layout.js  reactivity.js  demo.js
-  comps/   header  listing  product  checkout  done  cart  search  toast
-  img/     favicon.svg
-make/      tpl.mk (compose macro)  js.map  web.map
+  comps/   header  listing  product  viewer  checkout  done  cart  search  toast
+  img/     favicon.svg  products/<slug>.webp (part stills)
+  models/  <slug>/<layer>.stl (3D parts' meshes)
+make/      tpl.mk (compose macro)  js.map  web.map  neobotics.py
 ```
+
+## 3D parts from neoBotics
+
+Parts designed in [neoBotics](https://github.com/anroleroux/neoBotics) — the
+single 18650 holder and the six-cell pack, from its parts library — carry a
+rendered still for their tile and an interactive model on their page
+(`comps/viewer.js`: drag to turn, scroll to zoom, hide or see through each
+layer). The viewer loads three.js 0.160.0 from jsDelivr (pinned in
+`layout.html`'s import map) the first time a model is opened; if that or a
+mesh fails, the still stays in its place.
+
+`make/neobotics.py` brings an assembly over from a neoBotics build: it
+merges the component STLs into one per colour (a layer) and turns
+`part.png` into the still.
+
+```bash
+# in neoBotics: neobotics build library/battery_holders/pack_3x2
+python make/neobotics.py ../neoBotics/results/library/battery_holders/pack_3x2/_assembly/cad \
+    pack-18650-6 holders=#38383d cells=#e08f3d clips=#ccccd1 strips=#4c5461 screws=#b3b3b8
+```
+
+Then add or update the product and its `meshes` rows in `ui/demo.js`.
 
 ## Routes
 
@@ -85,6 +108,7 @@ One localStorage key per model, each a JSON array of rows. Relations are ids.
 | `price` | number | in dollars |
 | `stock` | integer | units on hand; ≤ 5 shows "Only n left", 0 is out of stock |
 | `blurb` | text | one-line description |
+| `image` | text \| null | still for the tile, relative to the base (`img/products/<slug>.webp`); null draws the part code instead |
 | `position` | integer | "Featured" sort order |
 
 ### `specs` (catalogue)
@@ -96,6 +120,20 @@ One localStorage key per model, each a JSON array of rows. Relations are ids.
 | `label` | text | e.g. "Core" |
 | `value` | text | e.g. "Dual Cortex‑M0+, 133 MHz" |
 | `position` | integer | order on the product page; the first two form the card's summary line |
+
+### `meshes` (catalogue)
+
+A part's 3D model, one row per layer. A product with meshes shows the
+viewer on its page instead of its tile.
+
+| Field | Type | Notes |
+|---|---|---|
+| `id` | integer | PK |
+| `product_id` | integer | → `products.id` |
+| `name` | text | layer name shown on its chip, e.g. "cells" |
+| `file` | text | binary STL, relative to the base (`models/<slug>/<name>.stl`); millimetres, z up |
+| `color` | text | `#rrggbb` |
+| `position` | integer | draw and chip order |
 
 ### `shipping_methods` (catalogue)
 
@@ -143,6 +181,6 @@ Placing an order also decrements `products.stock`.
 
 ### Seeding
 
-`ui/demo.js` writes the four catalogue models, reseeding them whenever its
+`ui/demo.js` writes the five catalogue models, reseeding them whenever its
 `DEMO_VERSION` changes (stored under `demo_version`). The shopper models are
 never seeded or overwritten.

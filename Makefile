@@ -5,7 +5,8 @@
 #  demo seed and every component into one script, then streams
 #  ui/layout.html and inlines that script and the CSS into a single
 #  static ui/dist/index.html — no bundler, no npm, just make + awk +
-#  sed. That file plus ui/img is what GitHub Pages serves.
+#  sed. That file plus ui/img and ui/models (the 3D parts' meshes)
+#  is what GitHub Pages serves.
 #
 #    dev  offline: any //online code is stripped and the shop runs
 #         from localStorage seeded by ui/demo.js. This is the only
@@ -18,8 +19,9 @@ SRC       := ui/layout.html
 MAP       := make/web.map
 JS_MAP    := make/js.map
 COMPS     := $(wildcard ui/comps/*.js)
-IMGS      := $(wildcard ui/img/*)
-DEPS      := $(SRC) ui/layout.css ui/layout.js ui/reactivity.js ui/demo.js $(COMPS) $(MAP) $(JS_MAP)
+IMGS      := $(wildcard ui/img/* ui/img/*/*)
+MODELS    := $(wildcard ui/models/*/*.stl)
+DEPS      := $(SRC) ui/layout.css ui/layout.js ui/reactivity.js ui/demo.js $(COMPS) $(MAP) $(JS_MAP) $(IMGS) $(MODELS)
 
 # Where the build is served from — written into <base href>, which the
 # router and every relative URL resolve against. The default suits a
@@ -43,7 +45,8 @@ dev: $(DEPS)
 	@rm -f $(BUILD_DIR)/index.js
 	@sed -i 's#{{base}}#$(BASE)#' $(BUILD_DIR)/index.html
 	@cp $(BUILD_DIR)/index.html $(BUILD_DIR)/404.html
-	@cp $(IMGS) $(BUILD_DIR)/img/
+	@cp -R ui/img/. $(BUILD_DIR)/img/
+	@rm -rf $(BUILD_DIR)/models && cp -R ui/models $(BUILD_DIR)/models
 	@echo "dev: offline build (base $(BASE)) → $(BUILD_DIR)/index.html"
 
 ## clean — remove the generated output

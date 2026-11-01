@@ -60,6 +60,11 @@ function specsOf(productId) {
     return loadLocal("specs").filter(function (s) { return s.product_id === productId; }).sort(byPosition);
 }
 
+/* A part's 3D model: one mesh per layer (holder, cell, clips …). */
+function meshesOf(productId) {
+    return loadLocal("meshes").filter(function (m) { return m.product_id === productId; }).sort(byPosition);
+}
+
 /* ---- Shared helpers ---- */
 
 var CURRENCY = "$";
@@ -73,6 +78,18 @@ function cents(amount) { return Math.round(amount * 100) / 100; }
 function isHouse(p) {
     var c = categoryById(p.category_id);
     return !!(c && c.house);
+}
+
+/* A part's tile: its still when it has one (drawn on a light wash),
+   otherwise the part code is the picture. */
+function tileClass(p) {
+    return "tile" + (isHouse(p) ? " tile--house" : "") + (p.image ? " tile--photo" : "");
+}
+
+function tileArt(p) {
+    return p.image
+        ? '<img class="tile__img" src="' + esc(p.image) + '" alt="" loading="lazy">'
+        : '<span class="tile__code">' + esc(p.code) + '</span>';
 }
 
 function stockLabel(p) {
@@ -243,6 +260,7 @@ function openDone(number) {
 /* {{header-js}} */
 /* {{listing-js}} */
 /* {{product-js}} */
+/* {{viewer-js}} */
 /* {{checkout-js}} */
 /* {{done-js}} */
 /* {{cart-js}} */
