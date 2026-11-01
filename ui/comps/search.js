@@ -21,7 +21,7 @@ function searchTemplate(state) {
     return '<div class="results">' + results.map(function (p) {
         var c = categoryById(p.category_id);
         return '<a class="result" ' + linkAttrs(productPath(p), "openProduct(" + p.id + ")") + '>' +
-                   '<span class="tile' + (isHouse(p) ? ' tile--house' : '') + '"><span class="tile__code">' + esc(p.code) + '</span></span>' +
+                   '<span class="' + tileClass(p) + '">' + tileArt(p) + '</span>' +
                    '<span class="result__text"><span class="result__name">' + esc(p.name) + '</span>' +
                        '<span class="result__cat">' + esc(c ? c.name : "") + '</span></span>' +
                    '<span class="result__price">' + money(p.price) + '</span>' +

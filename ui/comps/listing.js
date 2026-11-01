@@ -22,9 +22,9 @@ function productCard(p) {
     var cat = categoryById(p.category_id);
     var link = linkAttrs(productPath(p), "openProduct(" + p.id + ")");
     return '<article class="card">' +
-               '<a class="tile' + (isHouse(p) ? ' tile--house' : '') + '" ' + link + ' tabindex="-1" aria-hidden="true">' +
+               '<a class="' + tileClass(p) + '" ' + link + ' tabindex="-1" aria-hidden="true">' +
                    '<span class="tile__cat">' + esc(cat ? cat.name : "") + '</span>' +
-                   '<span class="tile__code">' + esc(p.code) + '</span>' +
+                   tileArt(p) +
                    (p.stock <= 5 ? '<span class="tile__flag">' + stockLabel(p) + '</span>' : '') +
                '</a>' +
                '<div class="card__body">' +

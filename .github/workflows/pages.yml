@@ -6,7 +6,7 @@ name: Deploy to GitHub Pages
 # per branch.
 #
 # Served as the anroleroux GitHub Pages project site, which the user
-# site's custom domain puts at anroleroux.co.za/veqir — so the build is
+# site's custom domain puts at anroleroux.co.za/vequir — so the build is
 # made with that base path and needs no CNAME of its own.
 #
 # It is the offline `make dev` build until a back end exists; then this
@@ -28,7 +28,7 @@ concurrency:                # one deploy at a time; don't cancel an in-flight on
 
 jobs:
   deploy-staging:
-    if: github.repository == 'anroleroux/veqir'
+    if: github.repository == 'anroleroux/vequir'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -38,7 +38,7 @@ jobs:
 
       # make, awk and sed are already on the runner — nothing to install.
       - name: Build the offline single-file site
-        run: make dev BASE=/veqir/
+        run: make dev BASE=/vequir/
 
       - uses: actions/configure-pages@v5
 

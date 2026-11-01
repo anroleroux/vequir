@@ -3,6 +3,7 @@
 {{header-js}}:ui/comps/header.js
 {{listing-js}}:ui/comps/listing.js
 {{product-js}}:ui/comps/product.js
+{{viewer-js}}:ui/comps/viewer.js
 {{checkout-js}}:ui/comps/checkout.js
 {{done-js}}:ui/comps/done.js
 {{cart-js}}:ui/comps/cart.js

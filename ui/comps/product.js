@@ -1,4 +1,4 @@
-/* ---- product — one part: tile, price, quantity and specs ---- */
+/* ---- product — one part: tile or 3D view, price, quantity and specs ---- */
 
 function productTemplate(state) {
     if (!state.current) return "";
@@ -23,10 +23,13 @@ function productTemplate(state) {
                '<a class="back-link" ' + linkAttrs(categoryPath(cat && cat.slug), "openList(" + (cat ? "'" + esc(cat.slug) + "'" : "null") + ")") + '>' +
                    '← ' + esc(cat ? cat.name : "All parts") + '</a>' +
                '<div class="pdp">' +
-                   '<div class="tile pdp__tile' + (isHouse(p) ? ' tile--house' : '') + '">' +
-                       '<span class="tile__code">' + esc(p.code) + '</span>' +
-                       '<span class="pdp__sku">SKU ' + esc(p.slug.toUpperCase()) + '</span>' +
-                   '</div>' +
+                   // a part with a model leaves its tile empty: the
+                   // viewer (comps/viewer.js) moves its live figure in
+                   (meshesOf(p.id).length
+                       ? '<div class="' + tileClass(p) + ' pdp__tile pdp__tile--3d" data-viewer="' + p.id + '"></div>'
+                       : '<div class="' + tileClass(p) + ' pdp__tile">' + tileArt(p) +
+                             '<span class="pdp__sku">SKU ' + esc(p.slug.toUpperCase()) + '</span>' +
+                         '</div>') +
                    '<div class="pdp__info">' +
                        '<div class="pdp__intro">' +
                            '<h1 class="display">' + esc(p.name) + '</h1>' +
