@@ -28,7 +28,7 @@ concurrency:                # one deploy at a time; don't cancel an in-flight on
 
 jobs:
   deploy-staging:
-    if: github.repository == 'anroleroux/veqir'
+    if: github.repository == 'anroleroux/vequir'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
